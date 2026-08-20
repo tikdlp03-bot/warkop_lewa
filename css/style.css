@@ -14,12 +14,14 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden; /* Mencegah halaman bergeser ke samping */
 }
 
 body {
   font-family: 'Poppins', sans-serif;
   background-color: var(--bg);
   color: #fff;
+  overflow-x: hidden;
 }
 
 /* Navbar */
@@ -27,8 +29,8 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.4rem 7%;
-  background-color: rgba(1, 1, 1, 0.8);
+  padding: 1.4rem 5%;
+  background-color: rgba(1, 1, 1, 0.9);
   border-bottom: 1px solid #513820;
   position: fixed;
   top: 0;
@@ -38,7 +40,7 @@ body {
 }
 
 .navbar .navbar-logo {
-  font-size: 2rem;
+  font-size: 1.8rem;
   font-weight: 700;
   color: #fff;
   font-style: italic;
@@ -48,14 +50,28 @@ body {
   color: var(--primary);
 }
 
+.navbar .navbar-nav {
+  display: flex;
+}
+
 .navbar .navbar-nav a {
   color: #fff;
   display: inline-block;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   margin: 0 1rem;
 }
 
 .navbar .navbar-nav a:hover {
+  color: var(--primary);
+}
+
+.navbar .navbar-extra a {
+  color: #fff;
+  margin: 0 0.4rem;
+  font-size: 1.4rem;
+}
+
+.navbar .navbar-extra a:hover {
   color: var(--primary);
 }
 
@@ -75,12 +91,14 @@ body {
 
 .hero .hero-video {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* Mengisi penuh area */
-  object-position: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: cover;
   z-index: -1;
 }
 
@@ -89,12 +107,18 @@ body {
   z-index: 1;
   width: 100%;
   height: 100%;
-  background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.3));
-  padding: 10rem 7% 7rem;
+  background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.4));
+  padding: 10rem 5% 5rem;
+  display: flex;
+  align-items: center;
+}
+
+.hero .content {
+  max-width: 60rem;
 }
 
 .hero .content h1 {
-  font-size: 5em;
+  font-size: 4rem;
   color: #fff;
   line-height: 1.2;
 }
@@ -104,31 +128,159 @@ body {
 }
 
 .hero .content p {
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   margin-top: 1rem;
   font-weight: 300;
 }
 
-/* Section Umum */
+/* Sections Umum */
 .about, .menu, .products, .contact {
-  padding: 10rem 7% 1.4rem;
+  padding: 8rem 5% 2rem;
 }
 
 .about h2, .menu h2, .products h2, .contact h2 {
   text-align: center;
-  font-size: 2.6rem;
+  font-size: 2.4rem;
   margin-bottom: 3rem;
 }
 
-.about .row, .contact .row {
+.about h2 span, .menu h2 span, .products h2 span, .contact h2 span {
+  color: var(--primary);
+}
+
+/* About Section */
+.about .row {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.about .row .about-img {
+  flex: 1 1 30rem;
+}
+
+.about .row .about-img img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.about .row .content {
+  flex: 1 1 30rem;
+}
+
+.about .row .content h3 {
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+}
+
+.about .row .content p {
+  margin-bottom: 0.8rem;
+  font-size: 1.1rem;
+  font-weight: 300;
+  line-height: 1.6;
+}
+
+/* Menu & Products Row */
+.menu .row, .products .row {
   display: flex;
   flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+}
+
+.products .product-card {
+  text-align: center;
+  border: 1px solid #444;
+  padding: 2rem;
+  border-radius: 8px;
+  flex: 1 1 25rem;
+  max-width: 30rem;
+  background: #111;
+}
+
+.products .product-image img {
+  height: 14rem;
+  object-fit: contain;
+}
+
+.products .product-content h3 {
+  font-size: 1.6rem;
+  margin-top: 1rem;
+}
+
+.products .product-price {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-top: 0.5rem;
+}
+
+/* Contact Section */
+.contact .row {
+  display: flex;
+  flex-wrap: wrap;
+  background: #1a1a1a;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.contact .row .map {
+  flex: 1 1 25rem;
+  min-height: 300px;
+  width: 100%;
+}
+
+.contact .row form {
+  flex: 1 1 25rem;
+  padding: 3rem 2rem;
+  text-align: center;
+}
+
+.contact .row form .input-group {
+  display: flex;
+  align-items: center;
+  margin-top: 1.5rem;
+  background-color: var(--bg);
+  border: 1px solid #444;
+  padding-left: 1.5rem;
+  border-radius: 5px;
+}
+
+.contact .row form .input-group input {
+  width: 100%;
+  padding: 1.2rem;
+  font-size: 1.3rem;
+  background: none;
+  color: #fff;
+}
+
+.contact .row form .btn {
+  margin-top: 2rem;
+  display: inline-block;
+  padding: 0.8rem 2.5rem;
+  font-size: 1.4rem;
+  color: #fff;
+  background-color: var(--primary);
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+/* Footer */
+footer {
+  background-color: var(--primary);
+  text-align: center;
+  padding: 2rem 0;
+  margin-top: 3rem;
+}
+
+footer .credit {
+  font-size: 0.9rem;
+  color: var(--bg);
+  font-weight: 600;
 }
 
 /* ==========================================
-   MEDIA QUERIES (RESPONSIF UNTUK HP)
+   MEDIA QUERIES (KHUSUS HP / LAYAR KECIL)
    ========================================== */
-
 @media (max-width: 768px) {
   #hamburger-menu {
     display: inline-block;
@@ -139,12 +291,13 @@ body {
     top: 100%;
     right: -100%;
     background-color: #fff;
-    width: 30rem;
+    width: 22rem;
     height: 100vh;
-    transition: 0.3s;
+    transition: 0.3s ease-in-out;
     display: flex;
     flex-direction: column;
-    padding: 1rem;
+    padding: 2rem 1rem;
+    box-shadow: -5px 0 10px rgba(0,0,0,0.3);
   }
 
   .navbar .navbar-nav.active {
@@ -154,26 +307,20 @@ body {
   .navbar .navbar-nav a {
     color: var(--bg);
     display: block;
-    margin: 1.5rem;
-  }
-
-  /* Penyesuaian agar video tidak terlalu terpotong di HP */
-  .hero {
-    min-height: 60vh; /* Tinggi dikurangi agar video lebih proporsional di layar portrait */
-  }
-
-  .hero .hero-video {
-    object-fit: cover;
-    object-position: center; /* Memastikan titik tengah video tetap terjaga */
+    margin: 1rem 0;
+    font-size: 1.3rem;
+    font-weight: 500;
   }
 
   .hero .content h1 {
-    font-size: 3rem;
+    font-size: 2.8rem;
   }
-}
 
-@media (max-width: 450px) {
-  html {
-    font-size: 55%;
+  .hero .content p {
+    font-size: 1.1rem;
+  }
+
+  .about .row {
+    flex-direction: column;
   }
 }
