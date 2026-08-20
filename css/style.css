@@ -142,7 +142,7 @@ body {
   align-items: center;
   gap: 1.5rem;
   margin-top: 1.5rem;
-  border-bottom: 1px dashed #再说;
+  border-bottom: 1px dashed #666;
   padding-bottom: 1.5rem;
   position: relative;
 }
@@ -537,4 +537,85 @@ footer .credit a {
   margin-top: 1rem;
   justify-content: center;
   align-items: center;
+}
+
+/* ==========================================
+   MEDIA QUERIES (RESPONSIF UNTUK HP)
+   ========================================== */
+
+/* Layar Maksimal 768px (Tablet & Smartphone) */
+@media (max-width: 768px) {
+  #hamburger-menu {
+    display: inline-block;
+  }
+
+  .navbar .navbar-nav {
+    position: absolute;
+    top: 100%;
+    right: -100%;
+    background-color: #fff;
+    width: 30rem;
+    height: 100vh;
+    transition: 0.3s;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+  }
+
+  .navbar .navbar-nav.active {
+    right: 0;
+  }
+
+  .navbar .navbar-nav a {
+    color: var(--bg);
+    display: block;
+    margin: 1.5rem;
+    padding: 0.5rem;
+    font-size: 1.5rem;
+  }
+
+  .navbar .navbar-nav a::after {
+    transform-origin: 0 0;
+  }
+
+  .navbar .navbar-nav a:hover::after {
+    transform: scaleX(0.2);
+  }
+
+  .navbar .search-form {
+    width: 90%;
+    right: 5%;
+  }
+
+  .hero .content h1 {
+    font-size: 3rem;
+  }
+
+  .hero .content p {
+    font-size: 1.2rem;
+  }
+
+  .about .row,
+  .contact .row {
+    flex-wrap: wrap;
+  }
+
+  .contact .row .map {
+    min-height: 250px;
+  }
+
+  .contact .row form {
+    padding: 3rem 2rem;
+  }
+}
+
+/* Layar HP Sangat Kecil (Maksimal 450px) */
+@media (max-width: 450px) {
+  html {
+    font-size: 55%;
+  }
+
+  .hero .content h1 {
+    font-size: 2.5rem;
+  }
 }
